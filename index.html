@@ -39,10 +39,11 @@
         <div class="frame">
             <div class="bit-1">
                 <div class="box">
-                    <form>
-                        <input type="text" value="Enter Your Email">
-                        <button type="button">Keep me posted</button>
+                    <form id="keep-me-posted-form">
+                        <input type="text" placeholder="Enter Your Email" id="email">
+                        <button type="button" id="keep-me-posted-button">Keep me posted</button>
                     </form>
+                    <h3 id="thanks">Thanks, we'll be in touch!</h3>
                 </div>
             </div>
         </div>
@@ -56,5 +57,43 @@
         </div>
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <script type="text/javascript">
+          var sayThankYou = function() {
+            $("#thanks").show();
+            $("#keep-me-posted-form").hide();
+          }
+
+          var sendEmail = function() {
+            var sendgridjs_url      = "http://startupweek-la-email.herokuapp.com/send";
+            var sendgridjs_to       = "crystal+startupweekla@sensay.it";
+            var sendgridjs_subject  = "[StartupWeek.LA] new interest";
+            var submitted_email     = $("#email").val();
+            var sendgridjs_html     = submitted_email;
+
+            var email = {
+              to      : sendgridjs_to, 
+              subject : sendgridjs_subject,
+              html    : sendgridjs_html
+            }
+            $.post(sendgridjs_url, email, function(response) {
+              if (response.success) {
+                sayThankYou();
+                // redirect somewhere or something. up to you. the email was sent successfully.
+              } else {
+                alert(response.error.message);
+              }
+            });
+          };
+
+          $("form#keep-me-posted-form").submit(function() {
+            sendEmail();
+            return false;
+          });
+          $("button#keep-me-posted-button").click(function() {
+            sendEmail();
+            return false;
+          });
+        </script>
     </body>
 </html>
