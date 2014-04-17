@@ -34,7 +34,7 @@ h2 {
 }
 
 h3 {
-	font-size: 20px;
+	font-size: 28px;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-weight: 300;
 	color: #fff;
@@ -51,27 +51,27 @@ a:hover {
 
 button { 
 	border: 0; 
-	background-color: #e32c14;
-	min-height: 50px;
-	padding: 0 10px 0 10px;
+	background: transparent;
+	min-height: 60px;
+	padding: 0 15px 0 15px;
 	margin-left: -2px;
 	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 20px;
+	font-size: 28px;
 	color: #fff;
 	text-transform: uppercase;
 	border: 5px solid #e32c14;
 }
 
 button:hover { 
-	background: transparent;
+	background-color: #e32c14;
 	cursor: pointer;
 	border: 5px solid #e32c14;
 }
 
 input {
 	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 20px;
-	min-height: 50px;
+	font-size: 28px;
+	min-height: 60px;
 	width: 300px;
 	color: #333;
 	text-transform: uppercase;
